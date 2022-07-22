@@ -1,10 +1,10 @@
 # Carrier Service <img src="https://cdn.packlink.com/apps/giger/logos/packlink-pro.svg" width="200">
 
-> Small Node Js library for use [Packlink PRO](https://pro.packlink.it/).
+> Small Javascript library for use [Packlink PRO](https://pro.packlink.it/).
 
 | JS Version  | Status | Require | version |
 |-------------|--------|---------|---------|
-| Node >=16.0 | @Beta  | node    | 1.0.0   |
+| Node >=16.0 | @Dev   | node    | 1.0.0   |
 
 [//]: # ([![Build Status]&#40;https://travis-ci.com/mwspace/packlink-php.svg?branch=main&#41;]&#40;https://travis-ci.com/mwspace/packlink-php.svg?branch=main&#41;)
 
