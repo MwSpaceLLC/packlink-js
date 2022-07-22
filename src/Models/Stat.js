@@ -22,9 +22,9 @@
  *
  */
 
-import Packlink from "../Packlink.mjs";
+const {Packlink} = require("../Packlink.js");
 
-export default class Stat extends Packlink {
+module.exports.Carrier = class Stat extends Packlink {
 
     /**
      *

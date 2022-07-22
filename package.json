@@ -1,9 +1,10 @@
 {
   "name": "packlink-js",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Packlink Pro Js Api Sdk (shipping automation) | Javascript Library Model (Unofficial)",
   "author": "Aleksandr Ivanovitch | MwSpace llc",
   "license": "Apache-2.0",
+  "type": "module",
   "dependencies": {
     "axios": "^0.27.2",
     "qs": "^6.11.0"

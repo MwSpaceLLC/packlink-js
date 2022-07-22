@@ -22,21 +22,15 @@
  *
  */
 
-import Packlink from "./src/Packlink";
+const {Instance} = require("./Instance.js");
 
-import Carrier from "./src/Models/Carrier";
-import PostalCode from "./src/Models/PostalCode";
-import PostalZone from "./src/Models/PostalZone";
-import Shipment from "./src/Models/Shipment";
-import Stat from "./src/Models/Stat";
-import Warehouse from "./src/Models/Warehouse";
+module.exports.Packlink = class Packlink extends Instance {
 
-export {
-    Packlink,
-    Carrier,
-    PostalCode,
-    PostalZone,
-    Shipment,
-    Stat,
-    Warehouse,
+    /**
+     *
+     * @param apikey
+     * @returns {*}
+     */
+    static setApiKey = (apikey) => Instance.Apy_Key = apikey;
+
 }

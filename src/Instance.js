@@ -22,10 +22,10 @@
  *
  */
 
-import qs from "qs";
-import axios from "axios";
+const qs = require("qs");
+const axios = require("axios");
 
-export default class Instance {
+module.exports.Instance = class Instance {
 
     static Apy_Key;
 

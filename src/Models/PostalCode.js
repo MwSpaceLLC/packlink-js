@@ -22,15 +22,41 @@
  *
  */
 
-import Instance from "./instance";
+const {Packlink} = require("../Packlink.js");
 
-export default class Packlink extends Instance {
+module.exports.Carrier = class PostalCode extends Packlink {
+
+    static _query;
 
     /**
      *
-     * @param apikey
-     * @returns {*}
+     * @returns {Promise<{}>}
      */
-    static setApiKey = (apikey) => Instance.Apy_Key = apikey;
+    static async all() {
+        return PostalCode._response(
+            await PostalCode._get(`locations/postalcodes/country/${PostalCode.platform_country}`, {q: PostalCode._query ?? ''})
+        )
+    }
+
+    /**
+     *
+     * @param query
+     * @returns {Promise<{}>}
+     */
+    static async get(query) {
+
+        PostalCode._query = query;
+
+        return await PostalCode.all();
+    }
+
+    /**
+     *
+     * @param postalcode
+     * @returns {Promise<boolean>}
+     */
+    static async exists(postalcode) {
+        return (await PostalCode.get(postalcode)).length > 0;
+    }
 
 }

@@ -22,9 +22,9 @@
  *
  */
 
-import Packlink from "../Packlink.mjs";
+const {Packlink} = require("../Packlink.js");
 
-export default class PostalZone extends Packlink {
+module.exports.Carrier = class PostalZone extends Packlink {
 
     /**
      *

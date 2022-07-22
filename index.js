@@ -22,42 +22,25 @@
  *
  */
 
-import Packlink from "../Packlink.mjs";
-import Error from "../Exceptions/Error.mjs";
+// import Packlink from "./src/Packlink";
+//
+// import PostalCode from "./src/Models/PostalCode";
+// import PostalZone from "./src/Models/PostalZone";
+// import Warehouse from "./src/Models/Warehouse";
+// import Shipment from "./src/Models/Shipment";
+// import Carrier from "./src/Models/Carrier";
+// import Stat from "./src/Models/Stat";
 
-export default class PostalCode extends Packlink {
+// export {
+//     Packlink,
+//     Carrier,
+//     PostalCode,
+//     PostalZone,
+//     Shipment,
+//     Stat,
+//     Warehouse,
+// }
 
-    static _query;
-
-    /**
-     *
-     * @returns {Promise<{}>}
-     */
-    static async all() {
-        return PostalCode._response(
-            await PostalCode._get(`locations/postalcodes/country/${PostalCode.platform_country}`, {q: PostalCode._query ?? ''})
-        )
-    }
-
-    /**
-     *
-     * @param query
-     * @returns {Promise<{}>}
-     */
-    static async get(query) {
-
-        PostalCode._query = query;
-
-        return await PostalCode.all();
-    }
-
-    /**
-     *
-     * @param postalcode
-     * @returns {Promise<boolean>}
-     */
-    static async exists(postalcode) {
-        return (await PostalCode.get(postalcode)).length > 0;
-    }
+module.exports = {
 
 }

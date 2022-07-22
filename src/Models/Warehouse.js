@@ -22,10 +22,10 @@
  *
  */
 
-import Packlink from "../Packlink.mjs";
-import Error from "../Exceptions/Error.mjs";
+const {Packlink} = require("../Packlink.js");
+const {Error} = require("../Exceptions/Error.js");
 
-export default class Warehouse extends Packlink {
+module.exports.Carrier = class Warehouse extends Packlink {
 
     /**
      *
