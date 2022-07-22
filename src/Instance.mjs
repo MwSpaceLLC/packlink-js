@@ -1,6 +1,6 @@
 /**
  * @copyright 2022 | MwSpace llc, srl
- * @package mwspace/packlink-js
+ * @package packlink-js
  * @author Aleksandr Ivanovitch
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +17,12 @@
  *
  * This class was developed to connect PHP frameworks with the packlink pro
  * shipping system. This library is unofficial and uses the connection protocols
- * of the cms. No copyright infringement.
+ * of the request. No copyright infringement.
  * Released, developed and maintain by MwSpace llc, srl.
  *
  */
 
+import qs from "qs";
 import axios from "axios";
 
 export default class Instance {
@@ -30,9 +31,9 @@ export default class Instance {
 
     static  #platform = 'PRO';
 
-    static  #language = 'it_IT';
+    static  language = 'it_IT';
 
-    static  #platform_country = 'IT';
+    static  platform_country = 'IT';
 
     static  #platform_postalzone = 113;
 
@@ -48,8 +49,12 @@ export default class Instance {
      * @param data
      * @returns {*}
      */
-    static async _post(endpoint, data = {}) {
-        return await Instance.#client().post(endpoint, data)
+    static async _post(endpoint, data) {
+        try {
+            return await Instance.#client().post(endpoint, data)
+        } catch (e) {
+            return e
+        }
     }
 
     /**
@@ -58,8 +63,12 @@ export default class Instance {
      * @param data
      * @returns {*}
      */
-    static async _put(endpoint, data = {}) {
-        return await Instance.#client().put(endpoint, data)
+    static async _put(endpoint, data) {
+        try {
+            return await Instance.#client().put(endpoint, data)
+        } catch (e) {
+            return e
+        }
     }
 
     /**
@@ -69,7 +78,11 @@ export default class Instance {
      * @returns {*}
      */
     static async _patch(endpoint, data) {
-        return await Instance.#client().patch(endpoint, data)
+        try {
+            return await Instance.#client().patch(endpoint, data)
+        } catch (e) {
+            return e
+        }
     }
 
     /**
@@ -78,8 +91,30 @@ export default class Instance {
      * @param params
      * @returns {*}
      */
-    static async _get(endpoint, params = {}) {
-        return await Instance.#client().get(endpoint, params ? {params: params} : null)
+    static async _get(endpoint, params) {
+        try {
+            return await Instance.#client().get(
+                `${endpoint}${params ? '?' + qs.stringify(params) : ''}`
+            )
+        } catch (e) {
+            return e
+        }
+    }
+
+    /**
+     *
+     * @param endpoint
+     * @param params
+     * @returns {*}
+     */
+    static async _delete(endpoint, params) {
+        try {
+            return await Instance.#client().delete(
+                `${endpoint}${params ? '?' + qs.stringify(params) : ''}`
+            )
+        } catch (e) {
+            return e
+        }
     }
 
     /**
@@ -88,53 +123,17 @@ export default class Instance {
      * @returns {{}}
      */
     static _response(res = {}) {
-
-        // console.log(res.data)
-
-        return res.data || {};
-    }
-
-    /**
-     *
-     * @param endpoint
-     * @param params
-     * @returns {*}
-     */
-    static async _delete(endpoint, params = {}) {
-        return await Instance.#client().delete(endpoint, {params: params})
+        return res.data ? res.data : res.response.data.messages ? res.response.data.messages : res.response.data ? res.response.data : res.response ? res.response : {};
     }
 
     static #client() {
-
-        const client = axios.create({
+        return axios.create({
             baseURL: Instance.#BASE_URL,
             headers: {
                 "Content-Type": Instance.#Content_Type,
                 "Authorization": Instance.Apy_Key,
             },
         });
-
-        // client.interceptors.request.use(function (config) {
-        //
-        //     console.log(config)
-        //     return config;
-        // }, function (error) {
-        //
-        //     console.log(error)
-        //     return Promise.reject(error);
-        // });
-        //
-        // client.interceptors.response.use(function (response) {
-        //
-        //     console.log(response)
-        //     return response;
-        // }, function (error) {
-        //
-        //     console.log(error)
-        //     return Promise.reject(error);
-        // });
-
-        return client;
     }
 
     /**

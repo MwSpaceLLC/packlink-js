@@ -22,12 +22,18 @@
  *
  */
 
-import Stat from "./src/Models/Stat";
-import Packlink from "./src/Packlink";
-import Carrier from "./src/Models/Carrier";
+import Packlink from "../Packlink.mjs";
 
-export {
-    Packlink,
-    Carrier,
-    Stat
+export default class PostalZone extends Packlink {
+
+    /**
+     *
+     * @returns {Promise<{}>}
+     */
+    static async all() {
+        return PostalZone._response(
+            await PostalZone._get('locations/postalzones/origins', {language: PostalZone.language})
+        )
+    }
+
 }

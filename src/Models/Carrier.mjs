@@ -1,6 +1,6 @@
 /**
  * @copyright 2022 | MwSpace llc, srl
- * @package mwspace/packlink-js
+ * @package packlink-js
  * @author Aleksandr Ivanovitch
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +17,13 @@
  *
  * This class was developed to connect PHP frameworks with the packlink pro
  * shipping system. This library is unofficial and uses the connection protocols
- * of the cms. No copyright infringement.
+ * of the request. No copyright infringement.
  * Released, developed and maintain by MwSpace llc, srl.
  *
  */
 
 import Packlink from "../Packlink.mjs";
+import Error from "../Exceptions/Error.mjs";
 
 export default class Carrier extends Packlink {
 
@@ -85,25 +86,28 @@ export default class Carrier extends Packlink {
      */
     async all() {
 
-        if (!this._from) throw new Error('from address has been required, please read the doc')
+        if (!this._from) return new Error('from address has been required');
 
-        if (!this._to) throw new Error('to address has been required, please read the doc')
+        if (!this._to) return new Error('to address has been required');
 
-        const _ = {
-            from: this._from,
-            to: this._to,
-            packages: this.packages ?? [
-                {
-                    'weight': this.weight ?? 5, // kg
-                    'height': 5, // cm
-                    'length': 5, // cm
-                    'width': 5, // cm
-                }
-            ],
-            sortBy: this.sortBy ?? 'totalPrice',
-        };
+        // TODO: check also php library to max weight
+        if (this.weight > 70) return new Error('weight must be below 70');
 
-        return Carrier._get('services', _);
+        return Carrier._response(
+            await Carrier._get('services', {
+                from: this._from,
+                to: this._to,
+                packages: this.packages ?? [
+                    {
+                        'weight': this.weight ?? 5, // kg
+                        'height': 5, // cm
+                        'length': 5, // cm
+                        'width': 5, // cm
+                    }
+                ],
+                sortBy: this.sortBy ?? 'totalPrice',
+            })
+        )
     }
 
 }

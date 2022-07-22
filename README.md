@@ -39,22 +39,44 @@ script. **PLEASE, SEE ALSO PHP UNIT TEST FOR MORE USAGE**
 
 #### 🐱‍🏍 Start Packlink Object:
 
-```js
+```ecmascript 6
+import {Packlink} from "packlink-js";
+
 Packlink.setApiKey(process.env.YOUR_PACKLINK_API_KEY);
 ```
 
 #### 🐱‍🏍 Get all Status Dashboard:
 
-```javascript
+```ecmascript 6
+import {Stat} from "packlink-js"; // get all shipments states
 
+const stats = await Stat.all();
+
+return console.log(stats) // Stat object class to json
 ```
 
 The class will connect via api to your packlink account (pro.packlink.it)
 
 ### 🚚 All Carriers:
 
-```javascript
+```ecmascript 6
+import {Carrier} from "packlink-js"; // get all shipments states
 
+const packages = [[]];
+
+const carriers = await Carrier.ship(packages)
+
+carriers.from({ // get prices for parcels by zip code from => to
+    country: 'IT',
+    zip: '20900'
+})
+
+carriers.to({
+    country: 'IT',
+    zip: '06073'
+});
+
+return res.json(await carriers.all()) // decode Carrier object class to json
 ```
 
 The system will search for the couriers with the best price for the shipment of all parcels attached. Create method
@@ -63,7 +85,7 @@ insert many data to array. Please see all data needed at
 
 ### 🚚 Find Carriers:
 
-```javascript
+```ecmascript 6
 
 ```
 
@@ -73,7 +95,21 @@ Please see all data needed at
 ### 🚚 Quote Carriers:
 
 ```javascript
+import {Carrier} from "packlink-js"; // get all shipments states
 
+const carriers = await Carrier.quote(8.5)  // quote ship weight (kg)
+
+carriers.from({ // get prices for parcels by zip code from => to
+    country: 'IT',
+    zip: '20900'
+})
+
+carriers.to({
+    country: 'IT',
+    zip: '06073'
+});
+
+return res.json(await carriers.all()) // decode Carrier object class to json
 ```
 
 The system will search for the couriers with the best price for the shipment of weight.
@@ -81,7 +117,11 @@ The system will search for the couriers with the best price for the shipment of 
 ### 🗺 All Postal Zones:
 
 ```javascript
+import {PostalZone} from "packlink-js"; // get all shipments states
 
+const postalzones = await PostalZone.all()
+
+return res.json(postalzones)
 ```
 
 The system will return all countries (iso code) available for shipment
@@ -89,7 +129,11 @@ The system will return all countries (iso code) available for shipment
 ### 🗺 All Postal Code:
 
 ```javascript
+import {PostalCode} from "packlink-js"; // get all shipments states
 
+const postalcodes = await PostalCode.all()
+
+return res.json(postalcodes)
 ```
 
 The system will return all postal code (zip code) available for shipment
@@ -198,6 +242,7 @@ Create method insert many data to array. Please see all data needed at
 ```javascript
 
 ```
+
 ## Why use?
 
 It matters Automatically import or manually create your national and international shipments.
@@ -272,7 +317,8 @@ See complete shipping carriers at [Shipping couriers](https://www.packlink.com/e
 ## Search
 
 Got to page for informational purposes only for browsers looking for keywords for this library included:
-**Packlink nodejs api**,**Packlink nodejs sdk**,**Laravel packlink api**,**Laravel shipping api**,**Codeigniter packlink api**
+**Packlink nodejs api**,**Packlink nodejs sdk**,**Laravel packlink api**,**Laravel shipping api**,**Codeigniter packlink
+api**
 ,**Codeigniter shipping api**,**Symfony packlink api**,**Symfony shipping api**,**Yii Framework packlink api**,**Yii
 Framework shipping api**,**Cakenodejs packlink api**,**Cakenodejs shipping api**,**Zend Framework packlink api**,**Zend
 Framework shipping api**.

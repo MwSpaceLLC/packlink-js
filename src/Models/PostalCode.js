@@ -1,6 +1,6 @@
 /**
  * @copyright 2022 | MwSpace llc, srl
- * @package mwspace/packlink-js
+ * @package packlink-js
  * @author Aleksandr Ivanovitch
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,23 +17,46 @@
  *
  * This class was developed to connect PHP frameworks with the packlink pro
  * shipping system. This library is unofficial and uses the connection protocols
- * of the cms. No copyright infringement.
+ * of the request. No copyright infringement.
  * Released, developed and maintain by MwSpace llc, srl.
  *
  */
 
-const {Packlink} = require("../Packlink");
+import Packlink from "../Packlink.mjs";
 
-module.exports.Stat = class Stat extends Packlink {
+export default class PostalCode extends Packlink {
+
+    static _query;
 
     /**
      *
      * @returns {Promise<{}>}
      */
     static async all() {
-        return Stat._response(
-            await Stat._get('shipments/stats')
+        return PostalCode._response(
+            await PostalCode._get(`locations/postalcodes/country/${PostalCode.platform_country}`, {q: PostalCode._query ?? ''})
         )
+    }
+
+    /**
+     *
+     * @param query
+     * @returns {Promise<{}>}
+     */
+    static async get(query) {
+
+        PostalCode._query = query;
+
+        return await PostalCode.all();
+    }
+
+    /**
+     *
+     * @param postalcode
+     * @returns {Promise<boolean>}
+     */
+    static async exists(postalcode) {
+        return !!await PostalCode.get(postalcode);
     }
 
 }

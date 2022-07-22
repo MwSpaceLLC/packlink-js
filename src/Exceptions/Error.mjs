@@ -1,6 +1,6 @@
 /**
  * @copyright 2022 | MwSpace llc, srl
- * @package mwspace/packlink-js
+ * @package packlink-js
  * @author Aleksandr Ivanovitch
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,20 +17,13 @@
  *
  * This class was developed to connect PHP frameworks with the packlink pro
  * shipping system. This library is unofficial and uses the connection protocols
- * of the cms. No copyright infringement.
+ * of the request. No copyright infringement.
  * Released, developed and maintain by MwSpace llc, srl.
  *
  */
 
-const {Instance} = require("./Instance");
-
-module.exports.Packlink = class Packlink extends Instance {
-
-    /**
-     *
-     * @param apikey
-     * @returns {*}
-     */
-    static setApiKey = (apikey) => Instance.Apy_Key = apikey;
-
+export default class Error {
+    constructor(message) {
+        return {status: 'error', message}
+    }
 }
