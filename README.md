@@ -163,34 +163,50 @@ validate your zip code.
 ### 📦 All Shipments:
 
 ```javascript
+import {Shipment} from "packlink-js";
 
+const shipments = await Shipment.all()
+
+return res.json(shipments)
 ```
 
 The system checks the tax code by confirming the captcha through Api Vision. Filter available:
 *ALL | PENDING | READY_TO_PURCHASE | DRAFT | PROCESSING | READY_FOR_SHIPPING | TRACKING | IN_TRANSIT | OUT_FOR_DELIVERY
 | DELIVERED | INCIDENT | RETURNED_TO_SENDER | ARCHIVED*
 
+### 📦 First Shipments:
+
+```javascript
+import {Shipment} from "packlink-js";
+
+const shipments = await Shipment.first()
+
+return res.json(shipments)
+```
+
 ### 📦 Find Shipment:
 
 ```javascript
+import {Shipment} from "packlink-js";
 
+const shipments = await Shipment.find('YOUR_SHIPMENT_ID')
+
+return res.json(shipments)
 ```
 
 The system will check the status of your order, reporting useful information such as the various tracking and couriers
 with collection and exchange points.
 
-### 📦 Where Shipment:
-
-```javascript
-
-```
-
-This is only BETA. see limitation per page, try at yourself
-
 ### 📦 Create Shipment:
 
 ```javascript
+import {Shipment} from "packlink-js";
 
+const model = {};
+
+const shipments = await Shipment.create(model)
+
+return res.json(shipments)
 ```
 
 Create method insert many data to array. Please see all data needed at
@@ -205,7 +221,11 @@ Create method insert many data to array. Please see all data needed at
 ### 📦 Delete Shipment:
 
 ```javascript
+import {Shipment} from "packlink-js";
 
+const shipments = await Shipment.delete('YOUR_SHIPMENT_ID') // delete if ready to ship or draft
+
+return res.json(shipments)
 ```
 
 ### 🎯 All Warehouses:

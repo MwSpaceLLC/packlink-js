@@ -28,13 +28,54 @@ import Error from "../Exceptions/Error.mjs";
 export default class Shipment extends Packlink {
 
     /**
-     *
+     * TODO: check if work
      * @returns {Promise<{}>}
      */
     static async all() {
         return Shipment._response(
             await Shipment._get('shipments')
         )
+            // map for use id shipment
+            .shipments.map(item => ({id: item.reference, ...item}))
+    }
+
+    /**
+     *
+     * @returns {Promise<{}>}
+     */
+    static async create(data) {
+        return Shipment._response(
+            await Shipment._post('shipments', data)
+        )
+    }
+
+    /**
+     *
+     * @returns {Promise<{}>}
+     */
+    static async find(uuid) {
+        return Shipment._response(
+            await Shipment._get(`shipments/${uuid}`)
+        )
+    }
+
+
+    /**
+     *
+     * @returns {Promise<{}>}
+     */
+    static async delete(uuid) {
+        return Shipment._response(
+            await Shipment._delete(`shipments/${uuid}`)
+        )
+    }
+
+    /**
+     *
+     * @returns {Promise<void>}
+     */
+    static async first() {
+        return (await Shipment.all()).shift()
     }
 
 }
