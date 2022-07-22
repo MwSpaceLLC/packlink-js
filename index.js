@@ -22,25 +22,12 @@
  *
  */
 
-// import Packlink from "./src/Packlink";
-//
-// import PostalCode from "./src/Models/PostalCode";
-// import PostalZone from "./src/Models/PostalZone";
-// import Warehouse from "./src/Models/Warehouse";
-// import Shipment from "./src/Models/Shipment";
-// import Carrier from "./src/Models/Carrier";
-// import Stat from "./src/Models/Stat";
-
-// export {
-//     Packlink,
-//     Carrier,
-//     PostalCode,
-//     PostalZone,
-//     Shipment,
-//     Stat,
-//     Warehouse,
-// }
-
 module.exports = {
-
+    ...require("./src/Packlink"),
+    ...require("./src/Models/Carrier"),
+    ...require("./src/Models/PostalCode"),
+    ...require("./src/Models/PostalZone"),
+    ...require("./src/Models/Shipment"),
+    ...require("./src/Models/Stat"),
+    ...require("./src/Models/Warehouse"),
 }
