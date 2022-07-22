@@ -1,0 +1,10 @@
+{
+  "name": "packlink-js",
+  "version": "1.0.10",
+  "description": "Packlink Pro Js Api Sdk (shipping automation) | Node Library Model (Unofficial)",
+  "author": "Aleksandr Ivanovitch | MwSpace llc",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
