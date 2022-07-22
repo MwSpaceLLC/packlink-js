@@ -22,6 +22,8 @@
 
 ![image](https://user-images.githubusercontent.com/29952045/129723631-f52d3795-2033-4217-812b-46113256a62e.png)
 
+> Try live **[stackblitz](https://stackblitz.com/edit/express-simple-gznvdk?file=index.js)** | **[codesandbox](https://codesandbox.io/s/loving-resonance-vyjjl2?file=/index.js)**
+
 ### 🐱‍🚀 Install Library:
 
 ` npm i packlink-js`
