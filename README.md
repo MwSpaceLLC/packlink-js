@@ -47,7 +47,7 @@ Packlink.setApiKey(process.env.YOUR_PACKLINK_API_KEY);
 
 #### 🐱‍🏍 Get all Status Dashboard:
 
-```ecmascript 6
+```javascript
 import {Stat} from "packlink-js"; // get all shipments states
 
 const stats = await Stat.all();
@@ -59,7 +59,7 @@ The class will connect via api to your packlink account (pro.packlink.it)
 
 ### 🚚 All Carriers:
 
-```ecmascript 6
+```javascript
 import {Carrier} from "packlink-js"; // get all shipments states
 
 const packages = [[]];
@@ -85,7 +85,7 @@ insert many data to array. Please see all data needed at
 
 ### 🚚 Find Carriers:
 
-```ecmascript 6
+```javascript
 
 ```
 
