@@ -31,6 +31,8 @@ export default class Instance {
 
     static  #platform = 'PRO';
 
+    static Api_Version = 'v1';
+
     static  language = 'it_IT';
 
     static  platform_country = 'IT';
@@ -39,7 +41,7 @@ export default class Instance {
 
     static #Content_Type = 'application/json';
 
-    static #BASE_URL = 'https://api.packlink.com/v1';
+    static #BASE_URL = 'https://api.packlink.com';
 
     static #CDN_URL = 'https://cdn.packlink.com/apps'
 
@@ -97,7 +99,9 @@ export default class Instance {
                 `${endpoint}${params ? '?' + qs.stringify(params) : ''}`
             )
         } catch (e) {
-            return e
+            return JSON.parse(
+                JSON.stringify(e)
+            )
         }
     }
 
@@ -122,13 +126,17 @@ export default class Instance {
      * @param res
      * @returns {{}}
      */
-    static _response(res = {}) {
-        return res.data ? res.data : res.response.data.messages ? res.response.data.messages : res.response.data ? res.response.data : res.response ? res.response : {};
+    static _response(res) {
+        return res.data ? res.data : res;
     }
 
+    /**
+     *
+     * @returns {AxiosInstance}
+     */
     static #client() {
         return axios.create({
-            baseURL: Instance.#BASE_URL,
+            baseURL: `${Instance.#BASE_URL}/${Instance.Api_Version}`,
             headers: {
                 "Content-Type": Instance.#Content_Type,
                 "Authorization": Instance.Apy_Key,

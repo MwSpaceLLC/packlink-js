@@ -81,7 +81,6 @@ export default class Carrier extends Packlink {
     }
 
     /**
-     * TODO: not work | programmable request arrays
      * @returns {Promise<*>}
      */
     async all() {

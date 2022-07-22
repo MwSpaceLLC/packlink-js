@@ -25,39 +25,16 @@
 import Packlink from "../Packlink.mjs";
 import Error from "../Exceptions/Error.mjs";
 
-export default class PostalCode extends Packlink {
-
-    static _query;
+export default class Shipment extends Packlink {
 
     /**
      *
      * @returns {Promise<{}>}
      */
     static async all() {
-        return PostalCode._response(
-            await PostalCode._get(`locations/postalcodes/country/${PostalCode.platform_country}`, {q: PostalCode._query ?? ''})
+        return Shipment._response(
+            await Shipment._get('shipments')
         )
-    }
-
-    /**
-     *
-     * @param query
-     * @returns {Promise<{}>}
-     */
-    static async get(query) {
-
-        PostalCode._query = query;
-
-        return await PostalCode.all();
-    }
-
-    /**
-     *
-     * @param postalcode
-     * @returns {Promise<boolean>}
-     */
-    static async exists(postalcode) {
-        return !!await PostalCode.get(postalcode);
     }
 
 }

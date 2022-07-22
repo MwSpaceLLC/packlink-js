@@ -211,19 +211,43 @@ Create method insert many data to array. Please see all data needed at
 ### 🎯 All Warehouses:
 
 ```javascript
+import {Warehouse} from "packlink-js";
 
+const warehouses = await Warehouse.all() // find warehouse by id
+
+return res.json(warehouses) // decode Warehouse object class to json
 ```
 
 ### 🎯 Find Warehouses:
 
 ```javascript
+import {Warehouse} from "packlink-js";
 
+const warehouse = await Warehouse.find('YOUR_WAREHOUSE_ID') // find warehouse by id
+
+return res.json(warehouse) // decode Warehouse object class to json
+```
+
+### 🎯 First Warehouses:
+
+```javascript
+import {Warehouse} from "packlink-js";
+
+const warehouse = await Warehouse.first() // find warehouse by id
+
+return res.json(warehouse) // decode Warehouse object class to json
 ```
 
 ### 🎯 Create Warehouses:
 
 ```javascript
+import {Warehouse} from "packlink-js";
 
+const model = {};
+
+const warehouse = await Warehouse.create(model) // create new Warehouse by Model Class
+
+return res.json(warehouse) // decode Warehouse object class to json
 ```
 
 Create method insert many data to array. Please see all data needed at
@@ -232,19 +256,23 @@ Create method insert many data to array. Please see all data needed at
 ### 🎯 Update Warehouses:
 
 ```javascript
+import {Warehouse} from "packlink-js";
 
-```
+const update = await Warehouse.update('YOUR_WAREHOUSE_ID', {alias: 'MwSpace llc'})
 
-### 🎯 Default Warehouses:
-
-```javascript
-
+return res.json(update)
 ```
 
 ### 🎯 Delete Warehouses:
 
 ```javascript
+import {Warehouse} from "packlink-js";
 
+const warehouse = await Warehouse.find('YOUR_WAREHOUSE_ID') // OPTIONAL | find warehouse by id
+
+return res.json(
+    await Warehouse.delete(warehouse.id)
+)
 ```
 
 ## Why use?
