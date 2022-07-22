@@ -22,12 +22,21 @@
  *
  */
 
-import Stat from "./src/Models/Stat";
 import Packlink from "./src/Packlink";
+
 import Carrier from "./src/Models/Carrier";
+import PostalCode from "./src/Models/PostalCode";
+import PostalZone from "./src/Models/PostalZone";
+import Shipment from "./src/Models/Shipment";
+import Stat from "./src/Models/Stat";
+import Warehouse from "./src/Models/Warehouse";
 
 export {
     Packlink,
     Carrier,
-    Stat
+    PostalCode,
+    PostalZone,
+    Shipment,
+    Stat,
+    Warehouse,
 }
