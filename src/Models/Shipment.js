@@ -35,7 +35,7 @@ module.exports.Shipment = class Shipment extends Packlink {
             await Shipment._get('shipments')
         )
             // map for use id shipment
-            .shipments.map(item => ({id: item.reference, ...item}))
+            .shipments?.map(item => ({id: item.reference, ...item}))
     }
 
     /**
