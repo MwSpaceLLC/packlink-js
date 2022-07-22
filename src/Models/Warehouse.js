@@ -25,7 +25,7 @@
 const {Packlink} = require("../Packlink.js");
 const {Error} = require("../Exceptions/Error.js");
 
-module.exports.Carrier = class Warehouse extends Packlink {
+module.exports.Warehouse = class Warehouse extends Packlink {
 
     /**
      *

@@ -22,7 +22,7 @@
  *
  */
 
-export default class Error {
+module.exports.Error =  class Error {
     constructor(message) {
         return {status: 'error', message}
     }

@@ -24,7 +24,7 @@
 
 const {Packlink} = require("../Packlink.js");
 
-module.exports.Carrier = class PostalCode extends Packlink {
+module.exports.PostalCode = class PostalCode extends Packlink {
 
     static _query;
 

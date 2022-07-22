@@ -24,7 +24,7 @@
 
 const {Packlink} = require("../Packlink.js");
 
-module.exports.Carrier = class PostalZone extends Packlink {
+module.exports.PostalZone = class PostalZone extends Packlink {
 
     /**
      *

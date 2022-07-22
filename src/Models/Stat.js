@@ -24,7 +24,7 @@
 
 const {Packlink} = require("../Packlink.js");
 
-module.exports.Carrier = class Stat extends Packlink {
+module.exports.Stat = class Stat extends Packlink {
 
     /**
      *
