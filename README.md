@@ -39,7 +39,7 @@ script. **PLEASE, SEE ALSO PHP UNIT TEST FOR MORE USAGE**
 
 #### 🐱‍🏍 Start Packlink Object:
 
-```ecmascript 6
+```javascript
 import {Packlink} from "packlink-js";
 
 Packlink.setApiKey(process.env.YOUR_PACKLINK_API_KEY);
