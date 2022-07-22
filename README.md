@@ -1,6 +1,6 @@
 ## php Version <img src="https://www.php.net//images/logos/php-logo.svg" width="80"/>
 
-> Go to use library [packlink-php](https://github.com/MwSpaceLLC/packlink-js)
+> Go to use library [packlink-php](https://github.com/MwSpaceLLC/packlink-php)
 
 # Carrier Service <img src="https://cdn.packlink.com/apps/giger/logos/packlink-pro.svg" width="200">
 
