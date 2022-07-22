@@ -54,8 +54,10 @@ module.exports.Instance = class Instance {
     static async _post(endpoint, data) {
         try {
             return await Instance.#client().post(endpoint, data)
-        } catch (e) {
-            return e
+        } catch (error) {
+
+            console.log(error)
+            return {error: error.message}
         }
     }
 
@@ -68,8 +70,10 @@ module.exports.Instance = class Instance {
     static async _put(endpoint, data) {
         try {
             return await Instance.#client().put(endpoint, data)
-        } catch (e) {
-            return e
+        } catch (error) {
+
+            console.log(error)
+            return {error: error.message}
         }
     }
 
@@ -82,8 +86,10 @@ module.exports.Instance = class Instance {
     static async _patch(endpoint, data) {
         try {
             return await Instance.#client().patch(endpoint, data)
-        } catch (e) {
-            return e
+        } catch (error) {
+
+            console.log(error)
+            return {error: error.message}
         }
     }
 
@@ -98,10 +104,10 @@ module.exports.Instance = class Instance {
             return await Instance.#client().get(
                 `${endpoint}${params ? '?' + qs.stringify(params) : ''}`
             )
-        } catch (e) {
-            return JSON.parse(
-                JSON.stringify(e)
-            )
+        } catch (error) {
+
+            console.log(error)
+            return {error: error.message}
         }
     }
 
@@ -116,8 +122,10 @@ module.exports.Instance = class Instance {
             return await Instance.#client().delete(
                 `${endpoint}${params ? '?' + qs.stringify(params) : ''}`
             )
-        } catch (e) {
-            return e
+        } catch (error) {
+
+            console.log(error)
+            return {error: error.message}
         }
     }
 
@@ -136,7 +144,7 @@ module.exports.Instance = class Instance {
      */
     static #client() {
 
-        if (!Instance.Apy_Key) return new Error('API KEY MUST BE SET AS Packlink.setApiKey(\'YOUR_API_KEY\');');
+        if (!Instance.Apy_Key) throw new Error('API KEY MUST BE SET AS Packlink.setApiKey(\'YOUR_API_KEY\');');
 
         return axios.create({
             baseURL: `${Instance.#BASE_URL}/${Instance.Api_Version}`,
