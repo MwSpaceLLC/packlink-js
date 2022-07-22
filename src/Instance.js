@@ -132,11 +132,11 @@ module.exports.Instance = class Instance {
 
     /**
      *
-     * @returns {AxiosInstance}
+     * @returns {any}
      */
     static #client() {
 
-        if (!Instance.Apy_Key) throw new Error('API KEY MUST BE SET AS Packlink.setApiKey(\'YOUR_API_KEY\');');
+        if (!Instance.Apy_Key) return new Error('API KEY MUST BE SET AS Packlink.setApiKey(\'YOUR_API_KEY\');');
 
         return axios.create({
             baseURL: `${Instance.#BASE_URL}/${Instance.Api_Version}`,

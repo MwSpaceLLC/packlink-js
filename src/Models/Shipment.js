@@ -34,8 +34,6 @@ module.exports.Shipment = class Shipment extends Packlink {
         return Shipment._response(
             await Shipment._get('shipments')
         )
-            // map for use id shipment
-            .shipments?.map(item => ({id: item.reference, ...item}))
     }
 
     /**
@@ -52,9 +50,9 @@ module.exports.Shipment = class Shipment extends Packlink {
      *
      * @returns {Promise<{}>}
      */
-    static async find(uuid) {
+    static async find(reference) {
         return Shipment._response(
-            await Shipment._get(`shipments/${uuid}`)
+            await Shipment._get(`shipments/${reference}`)
         )
     }
 
@@ -63,9 +61,9 @@ module.exports.Shipment = class Shipment extends Packlink {
      *
      * @returns {Promise<{}>}
      */
-    static async delete(uuid) {
+    static async delete(reference) {
         return Shipment._response(
-            await Shipment._delete(`shipments/${uuid}`)
+            await Shipment._delete(`shipments/${reference}`)
         )
     }
 
