@@ -52,7 +52,7 @@ Packlink.setApiKey(process.env.YOUR_PACKLINK_API_KEY);
 #### 🐱‍🏍 Get all Status Dashboard:
 
 ```javascript
-import {Stat} from "packlink-js"; // get all shipments states
+import {Stat} from "packlink-js";
 
 const stats = await Stat.all();
 
@@ -64,7 +64,7 @@ The class will connect via api to your packlink account (pro.packlink.it)
 ### 🚚 All Carriers:
 
 ```javascript
-import {Carrier} from "packlink-js"; // get all shipments states
+import {Carrier} from "packlink-js";
 
 const packages = [[]];
 
@@ -99,7 +99,7 @@ Please see all data needed at
 ### 🚚 Quote Carriers:
 
 ```javascript
-import {Carrier} from "packlink-js"; // get all shipments states
+import {Carrier} from "packlink-js";
 
 const carriers = await Carrier.quote(8.5)  // quote ship weight (kg)
 
@@ -121,7 +121,7 @@ The system will search for the couriers with the best price for the shipment of 
 ### 🗺 All Postal Zones:
 
 ```javascript
-import {PostalZone} from "packlink-js"; // get all shipments states
+import {PostalZone} from "packlink-js";
 
 const postalzones = await PostalZone.all()
 
@@ -133,7 +133,7 @@ The system will return all countries (iso code) available for shipment
 ### 🗺 All Postal Code:
 
 ```javascript
-import {PostalCode} from "packlink-js"; // get all shipments states
+import {PostalCode} from "packlink-js";
 
 const postalcodes = await PostalCode.all()
 
@@ -145,7 +145,11 @@ The system will return all postal code (zip code) available for shipment
 ### 🗺 Get Postal Code:
 
 ```javascript
+import {PostalCode} from "packlink-js"; 
 
+const postalcodes = await PostalCode.get('NAME_OF_CITY_OR_ZIP_CODE')
+
+return res.json(postalcodes)
 ```
 
 The system will return postal code (zip code) available for shipment by query search. You can use this function also for
@@ -154,7 +158,11 @@ validate your zip code.
 ### 🗺 Check Postal Code:
 
 ```javascript
+import {PostalCode} from "packlink-js";
 
+const postalcodes = await PostalCode.exists('NAME_OF_CITY_OR_ZIP_CODE')
+
+return res.json(postalcodes)
 ```
 
 The system will return postal code (zip code) available for shipment by query search. You can use this function also for

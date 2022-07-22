@@ -57,7 +57,7 @@ export default class PostalCode extends Packlink {
      * @returns {Promise<boolean>}
      */
     static async exists(postalcode) {
-        return !!await PostalCode.get(postalcode);
+        return (await PostalCode.get(postalcode)).length > 0;
     }
 
 }
